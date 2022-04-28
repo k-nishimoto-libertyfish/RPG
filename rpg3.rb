@@ -77,7 +77,6 @@ puts "#{monster_name}が現れた！戦闘を開始します！"
 
   #勇者のインスタンス化
   hero = Hero.new
-  hero_power = hero.hero_power
 
   #モンスターのインスタンス化。敵によって生成されるものを変えている
   if monster_name == "スライム"
@@ -89,7 +88,9 @@ puts "#{monster_name}が現れた！戦闘を開始します！"
   end
 
 while true
-  
+  hero_power = hero.hero_power
+  monster_power = monster.monster_power
+
   puts "何をしますか？"
   puts "戦う   [1]"
   puts "回復   [2]"
@@ -111,7 +112,6 @@ while true
     end
     
     #モンスターの攻撃のターン
-    monster_power = monster.monster_power
     puts "#{monster_name}の攻撃! #{monster_power}のダメージを受けた"
     hero.hero_damage(monster_power)
     if hero.hero_strength <= 0
