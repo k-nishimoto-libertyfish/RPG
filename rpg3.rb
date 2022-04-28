@@ -71,41 +71,28 @@ class Monster
   end
 end
 
-
 # 現れる敵をランダムに変えている
 monsters = ["スライム","ゴブリン","ドラゴン"]
 monster_name = monsters.sample
 puts "#{monster_name}が現れた！戦闘を開始します！"
 
-  #勇者のインスタンス化
-  hero = Hero.new
+#勇者のインスタンス化
+hero = Hero.new
 
-  #モンスターのインスタンス化。敵によって生成されるものを変えている
-  if monster_name == "スライム"
-    monster = Monster.new("スライム")
-  elsif monster_name == "ゴブリン"
-    monster = Monster.new("ゴブリン")
-  elsif monster_name == "ドラゴン"
-    monster = Monster.new("ドラゴン")
-  end
+#モンスターのインスタンス化。敵によって生成されるものを変えている
+if monster_name == "スライム"
+  monster = Monster.new("スライム")
+elsif monster_name == "ゴブリン"
+  monster = Monster.new("ゴブリン")
+elsif monster_name == "ドラゴン"
+  monster = Monster.new("ドラゴン")
+end
 
 
 while true
   #勇者とモンスターの攻撃力を設定している。
   hero_power = hero.hero_power
   monster_power = monster.monster_power
-
-  #モンスターの攻撃動作のメソッド
-  def monster_attack_turn
-    puts "#{monster_name}の攻撃! #{monster_power}のダメージを受けた"
-    hero.hero_damage(monster_power)
-    if hero.hero_strength <= 0
-      puts "勇者は負けました。"
-      break
-    else
-      puts "勇者の体力は残り #{hero.hero_strength}です！"
-    end
-  end 
 
   puts "何をしますか？"
   puts "戦う   [1]"
@@ -127,8 +114,14 @@ while true
     end
     
     #モンスターの攻撃のターン
-    monster_attack_turn
-
+    puts "#{monster_name}の攻撃! #{monster_power}のダメージを受けた"
+    hero.hero_damage(monster_power)    
+    if hero.hero_strength <= 0
+      puts "勇者は負けました。"
+      break
+    else
+      puts "勇者の体力は残り #{hero.hero_strength}です！"
+    end
 
   #回復を選んだ場合
   when 2
@@ -138,7 +131,14 @@ while true
     puts "勇者の体力は残り #{hero.hero_strength}です！"
 
     #モンスターの攻撃のターン
-    monster_attack_turn
+    puts "#{monster_name}の攻撃! #{monster_power}のダメージを受けた"
+    hero.hero_damage(monster_power)    
+    if hero.hero_strength <= 0
+      puts "勇者は負けました。"
+      break
+    else
+      puts "勇者の体力は残り #{hero.hero_strength}です！"
+    end
 
   #逃げるを選んだ場合
   when 3
