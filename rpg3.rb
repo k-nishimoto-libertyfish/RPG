@@ -34,34 +34,34 @@ end
 class Monster
 
   #モンスターの基本情報
-  @@strength = 0
-  @@power = 0
+
 
   #モンスターの体力の設定
   def initialize(monster,strength)
     @monster = monster
-    @@strength = strength
+    @strength = strength
   end
 
   #モンスターの体力を取得するメソッド
   def monster_strength
-    @@strength
+    @strength
   end
 
   #モンスターの攻撃力を取得するメソッド。モンスターによって攻撃力を変えている
   def monster_power
+    @power = 0
     if @monster == "スライム"
-      @@power = rand(10..20)
+      @power = rand(10..20)
     elsif @monster == "ゴブリン"
-      @@power = rand(15..25)
+      @power = rand(15..25)
     elsif @monster == "ドラゴン"
-      @@power = rand(20..30)
+      @power = rand(20..30)
     end
   end
 
   #モンスターが攻撃を受けた時の体力を減らすメソッド
   def monster_damage(hero_power)
-    @@strength = @@strength - hero_power
+    @strength = @strength - hero_power
   end
 end
 
