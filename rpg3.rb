@@ -38,15 +38,9 @@ class Monster
   @@power = 0
 
   #モンスターの体力の設定
-  def initialize(monster)
+  def initialize(monster,strength)
     @monster = monster
-    if @monster == "スライム"
-      @@strength = 80
-    elsif @monster == "ゴブリン"
-      @@strength = 100
-    elsif @monster == "ドラゴン"
-      @@strength = 120
-    end
+    @@strength = strength
   end
 
   #モンスターの体力を取得するメソッド
@@ -80,14 +74,14 @@ puts "#{monster_name}が現れた！戦闘を開始します！"
 hero = Hero.new
 
 #モンスターのインスタンス化。敵によって生成されるものを変えている
-if monster_name == "スライム"
-  monster = Monster.new("スライム")
-elsif monster_name == "ゴブリン"
-  monster = Monster.new("ゴブリン")
-elsif monster_name == "ドラゴン"
-  monster = Monster.new("ドラゴン")
+case monster_name
+when "スライム"
+  monster = Monster.new(monster_name,80)
+when "ゴブリン"
+  monster = Monster.new(monster_name,100)
+when "ドラゴン"
+  monster = Monster.new(monster_name,120)
 end
-
 
 while true
   #勇者とモンスターの攻撃力を設定している。
