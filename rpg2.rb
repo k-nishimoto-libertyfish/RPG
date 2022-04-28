@@ -22,7 +22,11 @@ class Hero
 
   #勇者の体力を回復するメソッド
   def hero_recovery
-    @@strength =   @@strength + 20
+    @@strength = @@strength + 30
+    #勇者の体力の上限は120のためそれ以上は回復させない
+    if @@strength >= 120
+      @@strength = 120
+    end
   end
 end
 
@@ -91,7 +95,7 @@ while true
   when 2
     #勇者の回復
     hero.hero_recovery
-    puts "勇者の体力が20回復しました"
+    puts "勇者の体力が回復しました"
     puts "勇者の体力は残り #{hero.hero_strength}です！"
 
     #モンスターの攻撃のターン
