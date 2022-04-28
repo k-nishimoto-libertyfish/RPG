@@ -1,4 +1,4 @@
-#体力回復を追加する
+#モンスターを追加する
 
 class Hero
   #勇者の基本情報
@@ -75,7 +75,6 @@ monsters = ["スライム","ゴブリン","ドラゴン"]
 monster_name = monsters.sample
 puts "#{monster_name}が現れた！戦闘を開始します！"
 
-while true
   #勇者のインスタンス化
   hero = Hero.new
   hero_power = hero.hero_power
@@ -83,15 +82,14 @@ while true
   #モンスターのインスタンス化。敵によって生成されるものを変えている
   if monster_name == "スライム"
     monster = Monster.new("スライム")
-    monster_power = monster.monster_power
   elsif monster_name == "ゴブリン"
     monster = Monster.new("ゴブリン")
-    monster_power = monster.monster_power
   elsif monster_name == "ドラゴン"
     monster = Monster.new("ドラゴン")
-    monster_power = monster.monster_power
   end
 
+while true
+  
   puts "何をしますか？"
   puts "戦う   [1]"
   puts "回復   [2]"
@@ -113,6 +111,7 @@ while true
     end
     
     #モンスターの攻撃のターン
+    monster_power = monster.monster_power
     puts "#{monster_name}の攻撃! #{monster_power}のダメージを受けた"
     hero.hero_damage(monster_power)
     if hero.hero_strength <= 0
@@ -140,7 +139,7 @@ while true
       puts "勇者の体力は残り #{hero.hero_strength}です！"
     end
 
-    
+
   #逃げるを選んだ場合
   when 3
     puts "無事に逃げれた！"
